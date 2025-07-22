@@ -3,7 +3,7 @@
 jsdelivr cdn:
 
 ```
-https://fastly.jsdelivr.net/gh/dogyyds/live2d-widget-v3@main/
+https://fastly.jsdelivr.net/gh/dogxii/live2d-widget-v3@main/
 ```
 
 # <center> Live2d-Widget-v3 </center>
