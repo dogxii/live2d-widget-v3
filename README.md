@@ -1,21 +1,21 @@
-> ### fork 自 [letere-gzj/live2d-widget-v3](https://github.com/letere-gzj/live2d-widget-v3) 项目：
 
-jsdelivr cdn:
+# <center> Live2d-Widget-v3 </center>
+
+> 修改自 [letere-gzj/live2d-widget-v3](https://github.com/letere-gzj/live2d-widget-v3) 项目
+
+## 1 介绍
+
+- **演示地址**：[DEMO](https://letere-gzj.github.io/live2d-widget-v3/)
+- **文章教程**：[在你的网站中加入 live2d 自定义看板娘](https://blog.dogxi.me/diy-website-live2d)
+
+快速使用：
+
+jsdelivr CDN:
 
 ```
 https://fastly.jsdelivr.net/gh/dogxii/live2d-widget-v3@main/
 ```
 
-# <center> Live2d-Widget-v3 </center>
-
----
-
-## 1 介绍
-
-- **演示地址**：[DEMO](https://letere-gzj.github.io/live2d-widget-v3/)
-- **文章教程**：[【Hugo】博客引入 moc3 类型的 live2d 模型](https://letere-gzj.github.io/hugo-stack/p/hugo/live2d-moc3/)
-
-![](md/png/sample.png)
 
 > [!NOTE]
 >
@@ -37,77 +37,75 @@ https://fastly.jsdelivr.net/gh/dogxii/live2d-widget-v3@main/
 
 ```html
 <script>
-  const cdnPath =
-    "https://cdn.jsdelivr.net/gh/letere-gzj/live2d-widget-v3@main";
+  const cdnPath = 'https://cdn.jsdelivr.net/gh/dogxii/live2d-widget-v3@main/'
   const config = {
     // 资源路径
     path: {
-      homePath: "/",
-      modelPath: cdnPath + "/Resources/",
-      cssPath: cdnPath + "/waifu.css",
-      tipsJsonPath: cdnPath + "/waifu-tips.json",
-      tipsJsPath: cdnPath + "/waifu-tips.js",
-      live2dCorePath: cdnPath + "/Core/live2dcubismcore.js",
-      live2dSdkPath: cdnPath + "/live2d-sdk.js",
+      homePath: '/',
+      modelPath: cdnPath + '/Resources/',
+      cssPath: cdnPath + '/waifu.css',
+      tipsJsonPath: cdnPath + '/waifu-tips.json',
+      tipsJsPath: cdnPath + '/waifu-tips.js',
+      live2dCorePath: cdnPath + '/Core/live2dcubismcore.js',
+      live2dSdkPath: cdnPath + '/live2d-sdk.js',
     },
     // 工具栏
     tools: [
-      "hitokoto",
-      "asteroids",
-      "express",
-      "switch-model",
-      "switch-texture",
-      "photo",
-      "info",
-      "quit",
+      'hitokoto',
+      'asteroids',
+      'express',
+      'switch-model',
+      'switch-texture',
+      'photo',
+      'info',
+      'quit',
     ],
     // 模型拖拽
     drag: {
       enable: true,
-      direction: ["x", "y"],
+      direction: ['x', 'y'],
     },
     // 模型切换(order: 顺序切换，random: 随机切换)
-    switchType: "order",
-  };
+    switchType: 'order',
+  }
 
   // 加载资源并初始化
   if (screen.width >= 768) {
     Promise.all([
-      loadExternalResource(config.path.cssPath, "css"),
-      loadExternalResource(config.path.live2dCorePath, "js"),
-      loadExternalResource(config.path.live2dSdkPath, "js"),
-      loadExternalResource(config.path.tipsJsPath, "js"),
+      loadExternalResource(config.path.cssPath, 'css'),
+      loadExternalResource(config.path.live2dCorePath, 'js'),
+      loadExternalResource(config.path.live2dSdkPath, 'js'),
+      loadExternalResource(config.path.tipsJsPath, 'js'),
     ]).then(() => {
       initWidget({
-        homePath: config.path.homePath,
         waifuPath: config.path.tipsJsonPath,
         cdnPath: config.path.modelPath,
         tools: config.tools,
         dragEnable: config.drag.enable,
         dragDirection: config.drag.direction,
         switchType: config.switchType,
-      });
-    });
+      })
+    })
   }
 
   // 异步加载资源
   function loadExternalResource(url, type) {
     return new Promise((resolve, reject) => {
-      let tag;
-      if (type === "css") {
-        tag = document.createElement("link");
-        tag.rel = "stylesheet";
-        tag.href = url;
-      } else if (type === "js") {
-        tag = document.createElement("script");
-        tag.src = url;
+      let tag
+      if (type === 'css') {
+        tag = document.createElement('link')
+        tag.rel = 'stylesheet'
+        tag.href = url
+      } else if (type === 'js') {
+        tag = document.createElement('script')
+        tag.src = url
       }
       if (tag) {
-        tag.onload = () => resolve(url);
-        tag.onerror = () => reject(url);
-        document.head.appendChild(tag);
+        tag.onload = () => resolve(url)
+        tag.onerror = () => reject(url)
+        document.head.appendChild(tag)
       }
-    });
+    })
   }
 </script>
 ```
